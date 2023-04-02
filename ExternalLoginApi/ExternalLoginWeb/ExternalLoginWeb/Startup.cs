@@ -32,6 +32,13 @@ namespace ExternalLoginWeb
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExternalLoginWeb", Version = "v1" });
@@ -49,6 +56,7 @@ namespace ExternalLoginWeb
             }
 
             app.UseHttpsRedirection();
+            //app.UseCors(policy => policy.AllowCredentials().AllowAnyHeader().AllowAnyOrigin());
 
             app.UseRouting();
 
