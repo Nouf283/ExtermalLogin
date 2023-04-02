@@ -34,10 +34,13 @@ namespace ExternalLoginWeb
             services.AddControllers();
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
+                options.AddPolicy(
+                    name: "AllowOrigin",
+                    builder => {
+                        builder.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                    });
             });
             services.AddSwaggerGen(c =>
             {
@@ -61,7 +64,7 @@ namespace ExternalLoginWeb
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
