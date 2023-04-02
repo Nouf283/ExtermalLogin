@@ -13,13 +13,10 @@ export class EmployeeListComponent {
 
  }
  ngOninit():void{
-   this.employeeService.getAllEmployees().subscribe({
-     next(position) {
-       console.log('Current Position: ', position);
-     },
-     error(msg) {
-       console.log('Error Getting Location: ', msg);
-     }
+   this.employeeService.getAllEmployees().subscribe((response) => {
+     //Code will execute when back-end will respond
+     console.log(response);
+     this.employees = response;
    });
  }
 
