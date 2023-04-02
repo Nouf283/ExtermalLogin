@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Employee} from "../../Models/employee";
+import {EmployeeService} from "../../services/employee.service";
 
 @Component({
   selector: 'app-employee-list',
@@ -7,6 +8,19 @@ import {Employee} from "../../Models/employee";
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent {
- employees:  Employee[]=[];
+ public employees:  Employee[]=[];
+ constructor(private  employeeService: EmployeeService){
+
+ }
+ ngOninit():void{
+   this.employeeService.getAllEmployees().subscribe({
+     next(position) {
+       console.log('Current Position: ', position);
+     },
+     error(msg) {
+       console.log('Error Getting Location: ', msg);
+     }
+   });
+ }
 
 }
