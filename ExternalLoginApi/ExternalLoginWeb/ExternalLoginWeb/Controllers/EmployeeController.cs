@@ -16,6 +16,7 @@ namespace ExternalLoginWeb.Controllers
             _externalLoginDbContext = externalLoginDbContext;
         }
         [HttpGet]
+        [Route("getEmployees")]
         public async Task<IActionResult> GetEmployees()
         {
             var employees = await _externalLoginDbContext.Employees.ToListAsync();

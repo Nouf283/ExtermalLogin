@@ -9,6 +9,6 @@ export class EmployeeService {
   constructor(private http:HttpClient) {}
 
   getAllEmployees():Observable<Employee[]>{
-    return  this.http.get<Employee[]>(this.baseApiUrl + '/api/employee');
+    return  this.http.get<Employee[]>(this.baseApiUrl + 'api/employee/getEmployees');
   }
 }
