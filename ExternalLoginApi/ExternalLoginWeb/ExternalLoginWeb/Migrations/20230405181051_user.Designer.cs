@@ -3,14 +3,16 @@ using ExternalLoginWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ExternalLoginWeb.Migrations
 {
     [DbContext(typeof(ExternalLoginDbContext))]
-    partial class ExternalLoginDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230405181051_user")]
+    partial class user
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
