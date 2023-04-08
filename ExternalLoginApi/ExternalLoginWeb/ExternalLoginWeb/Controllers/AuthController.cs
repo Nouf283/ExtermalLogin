@@ -11,6 +11,7 @@ using ExternalLoginWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExternalLoginWeb.Controllers
 {
@@ -26,6 +27,19 @@ namespace ExternalLoginWeb.Controllers
         }
 
         [HttpPost]
+        [Route("adduser")]
+        [AllowAnonymous]
+        public async Task<IActionResult> AddUser([FromBody] User user)
+        {
+            // employee.Id = (int)Guid.NewGuid();
+            await _externalLoginDbContext.Users.AddAsync(user);
+            await _externalLoginDbContext.SaveChangesAsync();
+            return Ok(user);
+        }
+
+        [HttpPost]
+        [Route("authenticateuser")]
+        [AllowAnonymous]
         public async Task<IActionResult> Authenticate([FromBody] User credential)
         {
             var user = await _externalLoginDbContext.Users.Where(x => x.UserName == credential.UserName && x.Password == credential.Password).FirstOrDefaultAsync();
