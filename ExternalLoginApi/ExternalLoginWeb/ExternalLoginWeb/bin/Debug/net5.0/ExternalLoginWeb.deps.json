@@ -33,7 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "ExternalLoginWeb/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.Facebook": "5.0.17",
+          "Microsoft.AspNetCore.Authentication.Facebook": "5.0.10",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.17",
           "Microsoft.EntityFrameworkCore": "5.0.17",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.17",
@@ -337,11 +337,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authentication.Facebook/5.0.17": {
+      "Microsoft.AspNetCore.Authentication.Facebook/5.0.10": {
         "runtime": {
           "lib/net5.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
-            "assemblyVersion": "5.0.17.0",
-            "fileVersion": "5.0.1722.21507"
+            "assemblyVersion": "5.0.10.0",
+            "fileVersion": "5.0.1021.41022"
           }
         },
         "compile": {
@@ -3026,12 +3026,12 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.Facebook/5.0.17": {
+    "Microsoft.AspNetCore.Authentication.Facebook/5.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-m64oIsBoG5ZFeGc5Sqk+gnF0sU3caifi9lc2qKGqS30ih5XE63gs5eR1GFzVn2fWT1DQHjz61jaEFMbJ1lU5FQ==",
-      "path": "microsoft.aspnetcore.authentication.facebook/5.0.17",
-      "hashPath": "microsoft.aspnetcore.authentication.facebook.5.0.17.nupkg.sha512"
+      "sha512": "sha512-mOntJphmKyaey7DW1tjiAfa4p8sU8aSRBrGF+oHMk0WRpbyDplN9zfYtmSnX2YbDCcKB5/IftmhRoic+v+hhKw==",
+      "path": "microsoft.aspnetcore.authentication.facebook/5.0.10",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.5.0.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/5.0.17": {
       "type": "package",

@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ExternalLoginWeb.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AuthController : Controller
     {
         private readonly ExternalLoginDbContext _externalLoginDbContext;

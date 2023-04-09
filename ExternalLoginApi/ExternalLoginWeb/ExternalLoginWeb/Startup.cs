@@ -31,6 +31,12 @@ namespace ExternalLoginWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["FacebookAppId"];
+                facebookOptions.AppSecret = Configuration["FacebookAppSecret"];
+            });
+
             services.AddDbContext<ExternalLoginDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
