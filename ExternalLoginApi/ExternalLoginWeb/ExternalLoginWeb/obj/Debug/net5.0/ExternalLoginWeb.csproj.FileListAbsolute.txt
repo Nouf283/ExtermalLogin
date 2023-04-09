@@ -64,3 +64,4 @@ C:\Projects\ExternalLogin\ExternalLoginApi\ExternalLoginWeb\ExternalLoginWeb\bin
 C:\Projects\ExternalLogin\ExternalLoginApi\ExternalLoginWeb\ExternalLoginWeb\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Projects\ExternalLogin\ExternalLoginApi\ExternalLoginWeb\ExternalLoginWeb\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Projects\ExternalLogin\ExternalLoginApi\ExternalLoginWeb\ExternalLoginWeb\bin\Debug\net5.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Projects\ExternalLogin\ExternalLoginApi\ExternalLoginWeb\ExternalLoginWeb\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Facebook.dll

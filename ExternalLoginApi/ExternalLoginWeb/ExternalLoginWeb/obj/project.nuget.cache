@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "G4RPJBKFaLf95N68UR8L1j6pr/MvmDWv8+W0X64RFAsnSrKvv21H4diErOlmqRWeYtezPB5CsswmxgalGDLvHw==",
+  "dgSpecHash": "01OyNPOmyVeS05Mk/8GkQ9wtfxNbyQx3C3c8Mnm3lvj8PoclfV4Ud0xOTzIWCr76MRFR+yB3OqpQ4SyshlKvYg==",
   "success": true,
   "projectFilePath": "C:\\Projects\\ExternalLogin\\ExternalLoginApi\\ExternalLoginWeb\\ExternalLoginWeb\\ExternalLoginWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\noufa\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\noufa\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\5.0.17\\microsoft.aspnetcore.authentication.facebook.5.0.17.nupkg.sha512",
     "C:\\Users\\noufa\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.17.nupkg.sha512",
     "C:\\Users\\noufa\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\noufa\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
