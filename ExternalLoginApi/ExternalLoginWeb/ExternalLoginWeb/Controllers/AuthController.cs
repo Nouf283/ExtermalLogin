@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace ExternalLoginWeb.Controllers
 {
@@ -75,6 +77,31 @@ namespace ExternalLoginWeb.Controllers
                     new SymmetricSecurityKey(secretKey),
                 SecurityAlgorithms.HmacSha256Signature));
             return new JwtSecurityTokenHandler().WriteToken(jwt);
+        }
+
+        [AllowAnonymous]
+        [HttpPost(nameof(ExternalLogin))]
+        public IActionResult ExternalLogin(User model)
+        {
+            //if (model == null || !ModelState.IsValid)
+            //{
+            //    return null;
+            //}
+
+            //var properties = new AuthenticationProperties { RedirectUri = _authenticationAppSettings.External.RedirectUri };
+
+            //return Challenge(properties, model.Provider);
+            return null;
+        }
+
+        [AllowAnonymous]
+        [HttpGet(nameof(ExternalLoginCallback))]
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
+        {
+            //Here we can retrieve the claims
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return null;
         }
 
     }
