@@ -20,17 +20,19 @@ namespace ExternalLoginWeb.Controllers
         [Route("getEmployees")]
         public async Task<IActionResult> GetEmployees()
         {
-            var employees = await _externalLoginDbContext.Employees.ToListAsync();
-            return Ok(employees);
+            //var employees = await _externalLoginDbContext.Employees.ToListAsync();
+            //return Ok(employees);
+            return null;
         }
 
         [HttpPost]
         public async Task<IActionResult> AddEmployee ([FromBody]Employee employee)
         {
-           // employee.Id = (int)Guid.NewGuid();
-            await _externalLoginDbContext.Employees.AddAsync(employee);
-            await _externalLoginDbContext.SaveChangesAsync();
-            return Ok(employee);
+            // employee.Id = (int)Guid.NewGuid();
+            //await _externalLoginDbContext.Employees.AddAsync(employee);
+            //await _externalLoginDbContext.SaveChangesAsync();
+            //return Ok(employee);
+            return null;
         }
     }
 }
