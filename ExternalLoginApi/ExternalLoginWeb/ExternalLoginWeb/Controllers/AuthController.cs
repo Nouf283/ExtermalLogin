@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using ExternalLoginWeb.Migrations;
 
 namespace ExternalLoginWeb.Controllers
 {
@@ -23,11 +25,52 @@ namespace ExternalLoginWeb.Controllers
     {
         private readonly ExternalLoginDbContext _externalLoginDbContext;
         private readonly IConfiguration _configuration;
+        private readonly SignInManager<User> signInManager;
 
-        public AuthController(ExternalLoginDbContext externalLoginDbContext, IConfiguration configuration)
+        public AuthController(ExternalLoginDbContext externalLoginDbContext, IConfiguration configuration, SignInManager<User> signInManager)
         {
             _externalLoginDbContext = externalLoginDbContext;
             this._configuration = configuration;
+            this.signInManager = signInManager;
+
+        }
+
+        [BindProperty]
+        public IEnumerable<AuthenticationScheme> ExternalLoginProviders { get; set; }
+
+        public async Task OnGetAsync()
+        {
+            this.ExternalLoginProviders = await signInManager.GetExternalAuthenticationSchemesAsync();
+        }
+
+        public IActionResult OnPostLoginExternally(string provider)
+        {
+            var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, null);
+            properties.RedirectUri = Url.Action("ExternalLoginCallback", "Auth");
+
+            return Challenge(properties, provider);
+        }
+
+        public async Task<IActionResult> ExternalLoginCallback()
+        {
+            var loginInfo = await signInManager.GetExternalLoginInfoAsync();
+            var emailClaim = loginInfo.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+            var userClaim = loginInfo.Principal.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
+
+            if (emailClaim != null && userClaim != null)
+            {
+                var user = new User { Email = emailClaim.Value, UserName = userClaim.Value };
+                await signInManager.SignInAsync(user, false);
+                return Ok(user);
+            }
+            else
+            {
+                ModelState.AddModelError("UnAuthorized", "You are not allowed to access the endpoint");
+                return  Unauthorized(ModelState);
+            }
+
+            //   return RedirectToPage("/Index");
+            //return Ok(user);
         }
 
         [HttpPost]
