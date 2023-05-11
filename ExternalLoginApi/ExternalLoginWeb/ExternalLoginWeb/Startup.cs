@@ -69,6 +69,12 @@ namespace ExternalLoginWeb
             //    };
             //});
 
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["FacebookAppId"];
+                facebookOptions.AppSecret = Configuration["FacebookAppSecret"];
+            });
+
             services.AddDbContext<ExternalLoginDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
