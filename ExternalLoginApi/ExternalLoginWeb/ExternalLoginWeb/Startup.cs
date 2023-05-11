@@ -94,17 +94,30 @@ namespace ExternalLoginWeb
             })
             .AddEntityFrameworkStores<ExternalLoginDbContext>();
 
-            services.AddControllers();
             services.AddCors(options =>
             {
                 options.AddPolicy(
                     name: "AllowOrigin",
-                    builder => {
-                        builder.AllowAnyOrigin()
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200/")
                                 .AllowAnyMethod()
+                                .SetIsOriginAllowed(origin => true)
                                 .AllowAnyHeader();
                     });
             });
+
+            services.AddControllers();
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(
+            //        name: "AllowOrigin",
+            //        builder => {
+            //            builder.AllowAnyOrigin()
+            //                    .AllowAnyMethod()
+            //                    .AllowAnyHeader();
+            //        });
+            //});
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExternalLoginWeb", Version = "v1" });
@@ -120,16 +133,18 @@ namespace ExternalLoginWeb
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ExternalLoginWeb v1"));
             }
-
+            
+             
             app.UseHttpsRedirection();
             //app.UseCors(policy => policy.AllowCredentials().AllowAnyHeader().AllowAnyOrigin());
 
             app.UseRouting();
+            app.UseCors("AllowOrigin");
 
             app.UseAuthentication();
             app.UseAuthorization();
            
-            app.UseCors("AllowOrigin");
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

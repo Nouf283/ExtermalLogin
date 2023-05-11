@@ -26,7 +26,7 @@ export class EmployeeListComponent implements OnInit{
    
 this.employeeService.getExternalLoginButton().subscribe((response) => {
   //Code will execute when back-end will respond
-  console.log(response);
+  //console.log(response);
   //@ts-ignore
   this.document.location.href = response;
 },

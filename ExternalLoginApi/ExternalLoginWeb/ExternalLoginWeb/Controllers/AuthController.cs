@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using ExternalLoginWeb.Migrations;
+using Microsoft.AspNetCore.Cors;
 
 namespace ExternalLoginWeb.Controllers
 {
@@ -48,6 +49,7 @@ namespace ExternalLoginWeb.Controllers
 
         [HttpPost]
         [Route("OnPostLoginExternally")]
+        [EnableCors("AllowOrigin")]
         [AllowAnonymous]
         public IActionResult OnPostLoginExternally(string provider="Facebook")
         {
