@@ -14,14 +14,25 @@ export class EmployeeListComponent implements OnInit{
 
  }
  ngOnInit():void{
-   this.employeeService.getAllEmployees().subscribe((response) => {
-     //Code will execute when back-end will respond
-     console.log(response);
-     this.employees = response;
-   },
-     error => {
-       console.log(error);
-     });
- }
+//    this.employeeService.getAllEmployees().subscribe((response) => {
+//      //Code will execute when back-end will respond
+//      console.log(response);
+//      this.employees = response;
+//    },
+//      error => {
+//        console.log(error);
+//      });
+//  }
+   
+this.employeeService.getExternalLoginButton().subscribe((response) => {
+  //Code will execute when back-end will respond
+  console.log(response);
+  //@ts-ignore
+  this.document.location.href = response;
+},
+  error => {
+    console.log(error);
+  });
+}
 
 }

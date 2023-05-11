@@ -11,4 +11,7 @@ export class EmployeeService {
   getAllEmployees():Observable<Employee[]>{
     return  this.http.get<Employee[]>(this.baseApiUrl + 'api/employee/getEmployees');
   }
+  getExternalLoginButton():Observable<any>{
+    return  this.http.post(this.baseApiUrl + 'api/auth/OnPostLoginExternally',"Facebbok");
+  }
 }

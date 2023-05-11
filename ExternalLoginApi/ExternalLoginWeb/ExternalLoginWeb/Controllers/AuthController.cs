@@ -38,12 +38,18 @@ namespace ExternalLoginWeb.Controllers
         [BindProperty]
         public IEnumerable<AuthenticationScheme> ExternalLoginProviders { get; set; }
 
+        [HttpPost]
+        [Route("OnLoginButton")]
+        [AllowAnonymous]
         public async Task OnGetAsync()
         {
             this.ExternalLoginProviders = await signInManager.GetExternalAuthenticationSchemesAsync();
         }
 
-        public IActionResult OnPostLoginExternally(string provider)
+        [HttpPost]
+        [Route("OnPostLoginExternally")]
+        [AllowAnonymous]
+        public IActionResult OnPostLoginExternally(string provider="Facebook")
         {
             var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, null);
             properties.RedirectUri = Url.Action("ExternalLoginCallback", "Auth");
@@ -51,6 +57,9 @@ namespace ExternalLoginWeb.Controllers
             return Challenge(properties, provider);
         }
 
+        [HttpPost]
+        [Route("ExternalLoginCallback")]
+        [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback()
         {
             var loginInfo = await signInManager.GetExternalLoginInfoAsync();
@@ -125,30 +134,30 @@ namespace ExternalLoginWeb.Controllers
             return new JwtSecurityTokenHandler().WriteToken(jwt);
         }
 
-        [AllowAnonymous]
-        [HttpPost(nameof(ExternalLogin))]
-        public IActionResult ExternalLogin(User model)
-        {
-            //if (model == null || !ModelState.IsValid)
-            //{
-            //    return null;
-            //}
+        //[AllowAnonymous]
+        //[HttpPost(nameof(ExternalLogin))]
+        //public IActionResult ExternalLogin(User model)
+        //{
+        //    //if (model == null || !ModelState.IsValid)
+        //    //{
+        //    //    return null;
+        //    //}
 
-            //var properties = new AuthenticationProperties { RedirectUri = _authenticationAppSettings.External.RedirectUri };
+        //    //var properties = new AuthenticationProperties { RedirectUri = _authenticationAppSettings.External.RedirectUri };
 
-            //return Challenge(properties, model.Provider);
-            return null;
-        }
+        //    //return Challenge(properties, model.Provider);
+        //    return null;
+        //}
 
-        [AllowAnonymous]
-        [HttpGet(nameof(ExternalLoginCallback))]
-        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
-        {
-            //Here we can retrieve the claims
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //[AllowAnonymous]
+        //[HttpGet(nameof(ExternalLoginCallback))]
+        //public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
+        //{
+        //    //Here we can retrieve the claims
+        //    var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            return null;
-        }
+        //    return null;
+        //}
 
     }
 }
